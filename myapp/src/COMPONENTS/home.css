@@ -1,0 +1,20 @@
+.container {
+	width: 600px;
+	height: 50vh;
+	background-color: antiquewhite;
+	padding: 3em;
+}
+input,
+textarea {
+	width: 15em;
+	border: 1px solid;
+	margin-left: 1em;
+}
+button {
+	text-transform: uppercase;
+}
+button:hover {
+	background-color: aqua;
+	color: #000;
+	font-weight: 800;
+}
