@@ -2,7 +2,13 @@ import React from "react";
 import "./todo.css";
 
 const TODO = (props) => {
-	const { title, desc, id } = props.todo;
+	const { title, desc } = props.todo;
+	const { id } = props;
+
+	const handleClick = () => {
+		props.onRemoveTodo(id);
+	};
+
 	return (
 		<article>
 			<div>
@@ -10,7 +16,11 @@ const TODO = (props) => {
 				<p className="p">{desc}</p>
 			</div>
 			<div>
-				<button>
+				<button
+					onClick={() => {
+						handleClick(id);
+					}}
+				>
 					<i className="fa fa-trash"></i>
 				</button>
 			</div>

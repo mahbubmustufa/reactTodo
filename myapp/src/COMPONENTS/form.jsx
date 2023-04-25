@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FORM = () => {
+const FORM = (props) => {
 	const [todo, setTodo] = useState({ title: "", desc: "" });
 	const { title, desc } = todo;
 
@@ -10,8 +10,14 @@ const FORM = () => {
 			return { ...oldTodo, [name]: event.target.value };
 		});
 	};
+
+	{
+		/*===EVENT HANDALER===*/
+	}
 	const handelSubmit = (event) => {
 		event.preventDefault();
+		props.onAddTodo(todo);
+		setTodo({ title: "", desc: "" });
 	};
 	return (
 		<form onSubmit={handelSubmit}>

@@ -1,31 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import "./home.css";
 
 import TODOS from "./todos";
 import FORM from "./form";
 
-const dummyTodos = [
-	{
-		id: 1,
-		title: "todo title 1",
-		desc: "todo 1 description",
-	},
-	{
-		id: 2,
-		title: "todo title 2",
-		desc: "todo 2 description",
-	},
-];
-
 const HOME = () => {
+	const [todos, setTodo] = useState([]);
+
+	const handleAddTodo = (todo) => {
+		setTodo((prevTosos) => {
+			return [...prevTosos, { id: uuidv4(), todo }];
+		});
+	};
+
+	const handleRemoveToso = (id) => {
+		setTodo((prevTosos) => {
+			const filteredTodos = prevTosos.filter((todo) => todo.id !== id);
+
+			return filteredTodos;
+		});
+	};
+
 	return (
 		<div className="container">
 			<h1 className="h1">Todo app</h1>
-			<FORM />
+			<FORM onAddTodo={handleAddTodo} />
 			{/*GET ACCESS FORM TODOS COMPONENTS*/}
 			{/*Take a attribute cald "todos" and puss "dummy todos"*/}
-			<TODOS todos={dummyTodos} />
+			<TODOS todos={todos} onRemoveTodo={handleRemoveToso} />
 		</div>
 	);
 };

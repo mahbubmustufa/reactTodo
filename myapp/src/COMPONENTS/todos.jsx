@@ -5,7 +5,12 @@ const TODOS = (props) => {
 	return (
 		<section>
 			{props.todos.map((todo) => (
-				<TODO todo={todo} key={todo.id} />
+				<TODO
+					todo={todo.todo}
+					key={todo.id}
+					id={todo.id}
+					onRemoveTodo={props.onRemoveTodo}
+				/>
 			))}
 		</section>
 	);
